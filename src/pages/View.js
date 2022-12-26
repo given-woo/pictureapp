@@ -9,6 +9,8 @@ import "firebase/compat/storage";
 import { useCollection } from "react-firebase-hooks/firestore";
 import { getStorage, ref, getDownloadURL } from "firebase/storage";
 
+import axios from 'axios';
+
 const firebaseConfig = {
     apiKey: "AIzaSyAyIm8PyiWzA6IFA063jKLGQRqLVRUkhwg",
     authDomain: "pictureapp-44d55.firebaseapp.com",
@@ -26,25 +28,45 @@ function Pic(props) {
     const {imgurl, likes} = props.image;
 
     const plusLike = () => {
-        var docRef = db.collection("PictureBase").doc(props.name);
-        docRef.get().then((doc) => {
-            docRef.set({
-                createdAt: doc.data().createdAt,
-                imgurl : doc.data().imgurl,
-                likes: doc.data().likes + 1,
-            })
-        });
+        axios.get('https://ipgeolocation.abstractapi.com/v1/?api_key=0312fa8c8adc4c829dc0332a093cf39d').then((response) => {
+            var docRef = db.collection("PictureBase").doc(props.name);
+            docRef.get().then((doc) => {
+                var likedBy = doc.data().likedBy;
+                if(likedBy.includes(response.data.ip_address)) {
+                    alert('Please vote another picture')
+                }
+                else {
+                    likedBy.push(response.data.ip_address);
+                    docRef.set({
+                        createdAt: doc.data().createdAt,
+                        imgurl : doc.data().imgurl,
+                        likedBy: likedBy,
+                        likes: doc.data().likes + 1,
+                    })
+                }
+            });
+        })
     }
 
     const minusLike = () => {
-        var docRef = db.collection("PictureBase").doc(props.name);
-        docRef.get().then((doc) => {
-            docRef.set({
-                createdAt: doc.data().createdAt,
-                imgurl : doc.data().imgurl,
-                likes: doc.data().likes - 1,
-            })
-        });
+        axios.get('https://ipgeolocation.abstractapi.com/v1/?api_key=0312fa8c8adc4c829dc0332a093cf39d').then((response) => {
+            var docRef = db.collection("PictureBase").doc(props.name);
+            docRef.get().then((doc) => {
+                var likedBy = doc.data().likedBy;
+                if(likedBy.includes(response.data.ip_address)) {
+                    alert('Please vote another picture')
+                }
+                else {
+                    likedBy.push(response.data.ip_address);
+                    docRef.set({
+                        createdAt: doc.data().createdAt,
+                        imgurl : doc.data().imgurl,
+                        likedBy: likedBy,
+                        likes: doc.data().likes - 1,
+                    })
+                }
+            });
+        })
     }
 
     return (

@@ -41,6 +41,7 @@ function Form() {
                         createdAt: firebase.firestore.FieldValue.serverTimestamp(),
                         imgurl : url,
                         likes: 0,
+                        likedBy: [],
                     })
                 });
             });
