@@ -1,0 +1,43 @@
+div.Form {
+    height: 100%;
+    display: flex;
+    justify-items: center;
+    align-items: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+input#File-For {
+    display: none;
+}
+
+label#File {
+    text-align: center;
+    font-size: 20px;
+    border: 0;
+    border-radius: 5px;
+    margin-top: 10px;
+    margin-right: 5px;
+    padding: 10px 15px;
+    color: rgb(0, 0, 0);
+    background-color: #bdbfc3;
+    font-family: 'Pretendard';
+    font-weight: 400;
+}
+
+form button {
+    text-align: center;
+    font-size: 20px;
+    border: 0;
+    border-radius: 5px;
+    margin-top: 10px;
+    margin-right: 5px;
+    padding: 10px 15px;
+    color: #fff;
+    background-color: #3079d7;
+    font-family: 'Pretendard';
+    font-weight: 500;
+}
