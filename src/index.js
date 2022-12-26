@@ -5,6 +5,7 @@ import { NavLink, BrowserRouter, Routes, Route } from 'react-router-dom'
 import View from './pages/View';
 import Form from './pages/Form';
 
+import './reset.css';
 import './index.css';
 
 
