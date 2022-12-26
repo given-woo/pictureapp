@@ -48,12 +48,14 @@ function Pic(props) {
     }
 
     return (
-        <>
+        <div className="image">
             <img src={imgurl}></img>
-            <p>{likes}</p>
-            <button onClick={plusLike}>Vote UP</button>
-            <button onClick={minusLike}>Vote Down</button>
-        </>
+            <p>{likes} Up votes</p>
+            <div className='buttons'>
+                <button onClick={plusLike}>Vote Up</button>
+                <button onClick={minusLike}>Vote Down</button>
+            </div>
+        </div>
     )
 }
 

@@ -51,13 +51,13 @@ function Form() {
     }
 
     return(
-        <div>
+        <div className='Form'>
             <form name="form" onSubmit={sendPicture}>
                 <label id="File" htmlFor="File-For">
-                    <div id="File-Button"></div>
+                    Choose File
                 </label>
                 <input id="File-For" type="file" name="file" accept="image/png, image/jpeg, image/gif"></input>
-                <button type="submit">업로드</button>
+                <button type="submit">Upload</button>
             </form>
         </div>
     )
